@@ -1,6 +1,10 @@
 #include "TimeHelpers.h"
 #include <windows.h>
 
+#if _MSC_VER == 1200
+typedef unsigned long DWORD_PTR; 
+#endif
+
 namespace UnitTest {
 
 Timer::Timer()

@@ -1,6 +1,12 @@
 #include "TestReporterStdout.h"
 #include <cstdio>
 
+#if _MSC_VER == 1200
+namespace std {
+    using ::printf;
+}
+#endif
+
 #include "TestDetails.h"
 
 namespace UnitTest {

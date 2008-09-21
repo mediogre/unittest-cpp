@@ -5,6 +5,12 @@
 #include "../TimeHelpers.h"
 #include "../TimeConstraint.h"
 
+#if _MSC_VER == 1200
+namespace std {
+    using ::strcmp;
+}
+#endif
+
 using namespace UnitTest;
 
 namespace

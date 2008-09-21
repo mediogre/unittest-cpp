@@ -1,6 +1,12 @@
 #include "AssertException.h"
 #include <cstring>
 
+#if _MSC_VER == 1200
+namespace std {
+    using ::strcpy;
+}
+#endif
+
 namespace UnitTest {
 
 AssertException::AssertException(char const* description, char const* filename, int const lineNumber)

@@ -1,0 +1,93 @@
+lib = UnitTest++.lib
+test = TestUnit.exe
+
+src = src/AssertException.cpp \
+	src/Test.cpp \
+	src/Checks.cpp \
+	src/TestRunner.cpp \
+	src/TestResults.cpp \
+	src/TestReporter.cpp \
+	src/TestReporterStdout.cpp \
+	src/ReportAssert.cpp \
+	src/TestList.cpp \
+	src/TimeConstraint.cpp \
+	src/TestDetails.cpp \
+	src/MemoryOutStream.cpp \
+	src/DeferredTestReporter.cpp \
+	src/DeferredTestResult.cpp \
+	src/XmlTestReporter.cpp \
+	src/Win32/TimeHelpers.cpp
+
+test_src = src/tests/Main.cpp \
+	src/tests/TestAssertHandler.cpp \
+	src/tests/TestChecks.cpp \
+	src/tests/TestUnitTest++.cpp \
+	src/tests/TestTest.cpp \
+	src/tests/TestTestResults.cpp \
+	src/tests/TestTestRunner.cpp \
+	src/tests/TestCheckMacros.cpp \
+	src/tests/TestTestList.cpp \
+	src/tests/TestTestMacros.cpp \
+	src/tests/TestTimeConstraint.cpp \
+	src/tests/TestTimeConstraintMacro.cpp \
+	src/tests/TestMemoryOutStream.cpp \
+	src/tests/TestDeferredTestReporter.cpp \
+	src/tests/TestXmlTestReporter.cpp
+
+objects = AssertException.obj \
+	Test.obj \
+	Checks.obj \
+	TestRunner.obj \
+	TestResults.obj \
+	TestReporter.obj \
+	TestReporterStdout.obj \
+	ReportAssert.obj \
+	TestList.obj \
+	TimeConstraint.obj \
+	TestDetails.obj \
+	MemoryOutStream.obj \
+	DeferredTestReporter.obj \
+	DeferredTestResult.obj \
+	XmlTestReporter.obj \
+	TimeHelpers.obj
+
+test_objects = Main.obj \
+	TestAssertHandler.obj \
+	TestChecks.obj \
+	TestUnitTest++.obj \
+	TestTest.obj \
+	TestTestResults.obj \
+	TestTestRunner.obj \
+	TestCheckMacros.obj \
+	TestTestList.obj \
+	TestTestMacros.obj \
+	TestTimeConstraint.obj \
+	TestTimeConstraintMacro.obj \
+	TestMemoryOutStream.obj \
+	TestDeferredTestReporter.obj \
+	TestXmlTestReporter.obj
+
+all: $(test)
+
+
+$(lib): $(objects) 
+	@echo Creating $(lib) library...
+	lib /OUT:$@ $(objects)
+
+$(test): $(lib) $(test_objects)
+	@echo Linking $(test)...
+	link  $(test_objects) $(lib)
+	@echo Running unit tests...
+	.\$(test)
+
+{src}.cpp.obj:
+	@echo $<
+	cl -Isrc -GX -c $<
+
+{src/win32}.cpp.obj:
+	@echo $<
+	cl -Isrc -GX -c $<
+
+{src/tests}.cpp.obj:
+	@echo $<
+	cl -Isrc/tests -GX -c $<

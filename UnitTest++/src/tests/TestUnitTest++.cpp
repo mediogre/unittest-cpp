@@ -1,5 +1,6 @@
 #include "../UnitTest++.h"
 #include "../ReportAssert.h"
+#include "../ExecuteTest.h"
 
 #include <vector>
 

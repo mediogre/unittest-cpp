@@ -69,7 +69,7 @@
 		try {																		 \
 			Fixture##Name##Helper fixtureHelper(m_details);							 \
 			ctorOk = true;															 \
-			ExecuteTest(fixtureHelper, testResults_, m_details); \
+			UnitTest::ExecuteTest(fixtureHelper, testResults_, m_details); \
 		}																			 \
 		catch (...) {																 \
 			if (ctorOk)																 \

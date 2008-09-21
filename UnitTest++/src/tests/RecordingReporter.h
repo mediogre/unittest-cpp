@@ -4,6 +4,13 @@
 #include "../TestReporter.h"
 #include <cstring>
 
+#if _MSC_VER == 1200
+namespace std {
+    using ::strcpy;
+    using ::strstr; 
+}
+#endif    
+
 #include "../TestDetails.h"
 
 struct RecordingReporter : public UnitTest::TestReporter

@@ -67,10 +67,11 @@ void CheckArrayEqual(TestResults& results, Expected const& expected, Actual cons
     {
         UnitTest::MemoryOutStream stream;
         stream << "Expected [ ";
-        for (int i = 0; i < count; ++i)
+        int i = 0;
+        for (; i < count; ++i)
             stream << expected[i] << " ";
         stream << "] but was [ ";
-        for (int i = 0; i < count; ++i)
+        for (i = 0; i < count; ++i)
             stream << actual[i] << " ";
         stream << "]";
 
@@ -97,10 +98,11 @@ void CheckArrayClose(TestResults& results, Expected const& expected, Actual cons
     {
         UnitTest::MemoryOutStream stream;
         stream << "Expected [ ";
-        for (int i = 0; i < count; ++i)
+        int i = 0; 
+        for (; i < count; ++i)
             stream << expected[i] << " ";
         stream << "] +/- " << tolerance << " but was [ ";
-        for (int i = 0; i < count; ++i)
+        for (i = 0; i < count; ++i)
             stream << actual[i] << " ";
         stream << "]";
 
@@ -119,8 +121,9 @@ void CheckArray2DClose(TestResults& results, Expected const& expected, Actual co
     if (!equal)
     {
         UnitTest::MemoryOutStream stream;
-        stream << "Expected [ ";    
-        for (int i = 0; i < rows; ++i)
+        stream << "Expected [ ";
+        int i = 0; 
+        for (; i < rows; ++i)
         {
             stream << "[ ";
             for (int j = 0; j < columns; ++j)
@@ -128,7 +131,7 @@ void CheckArray2DClose(TestResults& results, Expected const& expected, Actual co
             stream << "] ";
         }
         stream << "] +/- " << tolerance << " but was [ ";
-        for (int i = 0; i < rows; ++i)
+        for (i = 0; i < rows; ++i)
         {
             stream << "[ ";
             for (int j = 0; j < columns; ++j)

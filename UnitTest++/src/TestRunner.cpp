@@ -6,6 +6,11 @@
 #include "MemoryOutStream.h"
 #include <cstring>
 
+#if _MSC_VER == 1200
+namespace std {
+    using ::strcmp;
+}
+#endif
 
 namespace UnitTest {
 

@@ -2,6 +2,11 @@
 #include "../DeferredTestReporter.h"
 
 #include <string>
+#if _MSC_VER == 1200
+namespace std {
+    using ::strcpy;
+}
+#endif
 
 namespace UnitTest
 {
